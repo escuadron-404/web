@@ -4,37 +4,37 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(222, 84%, 4.9%);
+  --background: hsl(0, 0%, 3%);
   --foreground: hsl(210, 40%, 98%);
-  --card: hsl(222, 84%, 4.9%);
+  --card: hsl(0, 0%, 6%);
   --card-foreground: hsl(210, 40%, 98%);
-  --popover: hsl(222, 84%, 4.9%);
+  --popover: hsl(0, 0%, 6%);
   --popover-foreground: hsl(210, 40%, 98%);
   --primary: hsl(262, 83%, 58%);
   --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(217, 19%, 27%);
+  --secondary: hsl(0, 0%, 12%);
   --secondary-foreground: hsl(210, 40%, 98%);
-  --muted: hsl(217, 19%, 27%);
+  --muted: hsl(0, 0%, 10%);
   --muted-foreground: hsl(215, 20.2%, 65.1%);
-  --accent: hsl(216, 12%, 84%);
-  --accent-foreground: hsl(222, 84%, 4.9%);
+  --accent: hsl(262, 83%, 58%);
+  --accent-foreground: hsl(0, 0%, 3%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 40%, 98%);
-  --border: hsl(217, 19%, 27%);
-  --input: hsl(217, 19%, 27%);
+  --border: hsl(0, 0%, 15%);
+  --input: hsl(0, 0%, 12%);
   --ring: hsl(262, 83%, 58%);
   --chart-1: hsl(262, 83%, 58%);
   --chart-2: hsl(173, 58%, 39%);
   --chart-3: hsl(43, 74%, 66%);
   --chart-4: hsl(27, 87%, 67%);
   --chart-5: hsl(12, 76%, 61%);
-  --sidebar: hsl(222, 84%, 4.9%);
+  --sidebar: hsl(0, 0%, 3%);
   --sidebar-foreground: hsl(210, 40%, 98%);
   --sidebar-primary: hsl(262, 83%, 58%);
   --sidebar-primary-foreground: hsl(210, 40%, 98%);
-  --sidebar-accent: hsl(216, 12%, 84%);
-  --sidebar-accent-foreground: hsl(222, 84%, 4.9%);
-  --sidebar-border: hsl(217, 19%, 27%);
+  --sidebar-accent: hsl(262, 83%, 58%);
+  --sidebar-accent-foreground: hsl(0, 0%, 3%);
+  --sidebar-border: hsl(0, 0%, 15%);
   --sidebar-ring: hsl(262, 83%, 58%);
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: Georgia, serif;
@@ -129,34 +129,36 @@
   animation: gradient-x 15s ease infinite;
 }
 
-/* Glassmorphism effects */
+/* Glassmorphism effects with black tones */
 .glass {
-  background: rgba(31, 41, 55, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .glass-card {
-  background: rgba(17, 24, 39, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(147, 51, 234, 0.2);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(15, 15, 15, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(147, 51, 234, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(147, 51, 234, 0.1);
 }
 
-/* Enhanced hover effects */
+/* Enhanced hover effects with black and purple */
 .hover-lift {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .hover-lift:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(147, 51, 234, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(147, 51, 234, 0.4), inset 0 1px 0 rgba(147, 51, 234, 0.2);
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar with black and purple */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: hsl(217, 19%, 27%); }
+::-webkit-scrollbar-track { background: hsl(0, 0%, 8%); }
 ::-webkit-scrollbar-thumb { 
-  background: linear-gradient(180deg, hsl(262, 83%, 58%), hsl(262, 83%, 48%)); 
+  background: linear-gradient(180deg, hsl(262, 83%, 58%), hsl(0, 0%, 20%)); 
   border-radius: 10px; 
 }
 ::-webkit-scrollbar-thumb:hover { 
@@ -178,11 +180,11 @@
   background-clip: text;
 }
 
-/* Advanced gradient backgrounds */
+/* Advanced gradient backgrounds with black integration */
 .bg-mesh {
   background: radial-gradient(circle at 25% 25%, hsl(262, 83%, 58%) 0%, transparent 50%),
               radial-gradient(circle at 75% 75%, hsl(217, 91%, 60%) 0%, transparent 50%),
-              linear-gradient(135deg, hsl(236, 67%, 19%) 0%, hsl(222, 84%, 4.9%) 100%);
+              linear-gradient(135deg, hsl(0, 0%, 2%) 0%, hsl(0, 0%, 8%) 50%, hsl(0, 0%, 0%) 100%);
 }
 
 /* Loading spinner */
@@ -221,18 +223,18 @@
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.9)); 
 }
 
-/* Form enhancements */
+/* Form enhancements with black styling */
 .input-enhanced {
-  background: rgba(31, 41, 55, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(147, 51, 234, 0.3);
+  border: 1px solid rgba(147, 51, 234, 0.4);
   transition: all 0.3s ease;
 }
 
 .input-enhanced:focus {
-  background: rgba(31, 41, 55, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   border-color: hsl(262, 83%, 58%);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15), 0 0 20px rgba(124, 58, 237, 0.1);
 }
 
 /* Mobile optimizations */
@@ -255,4 +257,44 @@
 button:focus, input:focus, textarea:focus, select:focus {
   outline: 2px solid hsl(262, 83%, 58%);
   outline-offset: 2px;
+}
+
+/* Black and Purple themed utilities */
+.bg-black-purple-gradient {
+  background: linear-gradient(135deg, #000000 0%, #1a0033 50%, #000000 100%);
+}
+
+.border-purple-glow {
+  border: 1px solid rgba(147, 51, 234, 0.5);
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+}
+
+.text-shadow-purple {
+  text-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+}
+
+.black-card-enhanced {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 5, 20, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(147, 51, 234, 0.1);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Enhanced purple glow effect */
+.glow-purple {
+  filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.3));
+}
+
+/* Black text with purple shadow for readability */
+.text-black-purple-shadow {
+  color: #000000;
+  text-shadow: 0 0 10px rgba(147, 51, 234, 0.8);
 }

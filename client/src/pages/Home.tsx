@@ -12,7 +12,7 @@ export default function Home() {
   const { user, login, logout, loading } = useFirebaseAuth();
 
   return (
-    <div className="bg-gray-900 text-white font-inter min-h-screen">
+    <div className="bg-black text-white font-inter min-h-screen">
       <Navigation 
         currentSection={currentSection}
         onSectionChange={setCurrentSection}
@@ -23,7 +23,7 @@ export default function Home() {
       
       {/* User Welcome */}
       {user && (
-        <div className="fixed top-20 left-0 right-0 z-40 glass-card mx-6 rounded-2xl p-4 text-center animate-slide-down">
+        <div className="fixed top-20 left-0 right-0 z-40 black-card-enhanced mx-6 rounded-2xl p-4 text-center animate-slide-down border-purple-glow">
           <p className="font-medium">
             ¡Bienvenido, <span className="text-gradient-purple font-bold">{user.displayName || user.email?.split('@')[0]}</span>!
           </p>

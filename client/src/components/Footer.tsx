@@ -9,7 +9,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="glass py-12">
+    <footer className="bg-black-purple-gradient border-t border-purple-500/20 py-12">
       <div className="container mx-auto px-6 text-center">
         <div className="flex items-center justify-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center">

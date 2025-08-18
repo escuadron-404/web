@@ -60,9 +60,9 @@ export default function CorporateSection() {
   };
 
   return (
-    <section className="bg-gray-900 min-h-screen pt-24" id="corporativo">
+    <section className="bg-black min-h-screen pt-24" id="corporativo">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 py-20">
+      <div className="bg-gradient-to-br from-black via-purple-900 to-black py-20">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-8 text-white leading-tight">
             Soluciones <span className="text-gradient-purple">Corporativas</span>
@@ -84,7 +84,7 @@ export default function CorporateSection() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <div className="glass-card rounded-3xl p-10 text-center hover-lift">
+          <div className="black-card-enhanced rounded-3xl p-10 text-center hover-lift">
             <div className="bg-gradient-to-br from-purple-500 to-indigo-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-8">
               <Users className="w-12 h-12 text-white" />
             </div>
@@ -106,7 +106,7 @@ export default function CorporateSection() {
             </div>
           </div>
           
-          <div className="glass-card rounded-3xl p-10 text-center hover-lift">
+          <div className="black-card-enhanced rounded-3xl p-10 text-center hover-lift">
             <div className="bg-gradient-to-br from-blue-500 to-cyan-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-8">
               <Layers className="w-12 h-12 text-white" />
             </div>
@@ -165,7 +165,7 @@ export default function CorporateSection() {
                 gradient: "from-orange-500 to-red-500"
               }
             ].map((step, index) => (
-              <div key={index} className="glass-card rounded-2xl p-8 text-center hover-lift">
+              <div key={index} className="black-card-enhanced rounded-2xl p-8 text-center hover-lift">
                 <div className={`bg-gradient-to-br ${step.gradient} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white`}>
                   {step.number}
                 </div>
@@ -214,7 +214,7 @@ export default function CorporateSection() {
               delay: "0.4s"
             }
           ].map((talent, index) => (
-            <div key={index} className="glass-card rounded-3xl p-8 text-center hover-lift">
+            <div key={index} className="black-card-enhanced rounded-3xl p-8 text-center hover-lift">
               <div className={`w-32 h-32 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full mx-auto mb-6 ring-4 ring-purple-500/30 animate-float flex items-center justify-center`} style={{ animationDelay: talent.delay }}>
                 <Users className="w-16 h-16 text-white" />
               </div>
@@ -253,7 +253,7 @@ export default function CorporateSection() {
         </div>
         
         <div className="max-w-4xl mx-auto">
-          <form onSubmit={handleFormSubmit} className="glass-card rounded-3xl p-10">
+          <form onSubmit={handleFormSubmit} className="black-card-enhanced rounded-3xl p-10">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <label htmlFor="companyName" className="block text-sm font-semibold mb-2 text-gray-200">Nombre de la Empresa</label>

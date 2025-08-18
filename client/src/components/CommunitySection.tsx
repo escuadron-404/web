@@ -108,7 +108,7 @@ export default function CommunitySection({ user }: CommunitySectionProps) {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="glass-card rounded-3xl p-8 text-center hover-lift group">
+          <div className="black-card-enhanced rounded-3xl p-8 text-center hover-lift group">
             <div className="bg-gradient-to-br from-purple-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-soft group-hover:scale-110 transition-transform">
               <CheckCircle className="w-10 h-10 text-white" />
             </div>
@@ -116,7 +116,7 @@ export default function CommunitySection({ user }: CommunitySectionProps) {
             <p className="text-gray-300 leading-relaxed">Trabajamos juntos en proyectos open source, compartimos conocimiento y construimos soluciones que impactan</p>
           </div>
           
-          <div className="glass-card rounded-3xl p-8 text-center hover-lift group" style={{ animationDelay: '0.2s' }}>
+          <div className="black-card-enhanced rounded-3xl p-8 text-center hover-lift group" style={{ animationDelay: '0.2s' }}>
             <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-soft group-hover:scale-110 transition-transform">
               <Users className="w-10 h-10 text-white" />
             </div>
@@ -124,7 +124,7 @@ export default function CommunitySection({ user }: CommunitySectionProps) {
             <p className="text-gray-300 leading-relaxed">Conectamos desarrolladores senior con junior para acelerar el aprendizaje y crear vínculos duraderos</p>
           </div>
           
-          <div className="glass-card rounded-3xl p-8 text-center hover-lift group" style={{ animationDelay: '0.4s' }}>
+          <div className="black-card-enhanced rounded-3xl p-8 text-center hover-lift group" style={{ animationDelay: '0.4s' }}>
             <div className="bg-gradient-to-br from-blue-500 to-indigo-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-soft group-hover:scale-110 transition-transform">
               <BookOpen className="w-10 h-10 text-white" />
             </div>
@@ -162,7 +162,7 @@ export default function CommunitySection({ user }: CommunitySectionProps) {
               colors: ["from-cyan-400 to-blue-500", "from-gray-600 to-gray-700", "from-green-400 to-green-500"]
             }
           ].map((project, index) => (
-            <div key={index} className="glass-card rounded-3xl p-8 hover-lift group">
+            <div key={index} className="black-card-enhanced rounded-3xl p-8 hover-lift group">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
                   <BookOpen className="w-6 h-6 text-white" />
@@ -191,7 +191,7 @@ export default function CommunitySection({ user }: CommunitySectionProps) {
 
       {/* Testimonial */}
       <div className="container mx-auto px-6 py-20">
-        <div className="glass-card rounded-3xl p-12 max-w-4xl mx-auto text-center">
+        <div className="black-card-enhanced rounded-3xl p-12 max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <div className="w-16 h-16 text-purple-400 mx-auto opacity-50 flex items-center justify-center">
               <MessageCircle className="w-16 h-16" />
@@ -245,7 +245,7 @@ export default function CommunitySection({ user }: CommunitySectionProps) {
         </div>
         
         <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleFormSubmit} className="glass-card rounded-3xl p-8 space-y-6">
+          <form onSubmit={handleFormSubmit} className="black-card-enhanced rounded-3xl p-8 space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold mb-2 text-gray-200">Nombre *</label>

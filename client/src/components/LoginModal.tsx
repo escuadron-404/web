@@ -32,7 +32,7 @@ export default function LoginModal({ isOpen, onClose, onLogin, loading }: LoginM
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="glass-card rounded-3xl p-8 max-w-md w-full mx-4 animate-scale-in">
+      <div className="black-card-enhanced rounded-3xl p-8 max-w-md w-full mx-4 animate-scale-in border-purple-glow">
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <User className="w-8 h-8 text-white" />
