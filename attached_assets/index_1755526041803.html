@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuadrón 404 - Comunidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-purple-400">Escuadrón 404</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-purple-400 hover:text-purple-300">Comunidad</a>
+                <a href="corporate.html" class="hover:text-purple-300">Corporativo</a>
+                <button id="loginBtn" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">Login</button>
+                <button id="logoutBtn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded hidden">Logout</button>
+            </div>
+            <button id="mobileMenuBtn" class="md:hidden" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-2" role="navigation" aria-label="Menú móvil">
+            <a href="index.html" class="block text-purple-400 hover:text-purple-300">Comunidad</a>
+            <a href="corporate.html" class="block hover:text-purple-300">Corporativo</a>
+            <button id="mobileLoginBtn" class="block bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded w-full">Login</button>
+        </div>
+    </nav>
+
+    <!-- User Welcome (hidden by default) -->
+    <div id="userWelcome" class="bg-purple-600 p-4 text-center hidden">
+        <p>Bienvenido, <span id="userName"></span>!</p>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-900 to-blue-900 py-20 overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gradient-animate opacity-0">Escuadrón 404</h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300 opacity-0">Comunidad de desarrolladores apasionados por la tecnología</p>
+            <button id="discordBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg text-lg btn-animate animate-glow opacity-0">
+                Únete al Discord
+            </button>
+        </div>
+    </section>
+
+    <!-- Qué hacemos -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">¿Qué hacemos?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center animate-on-scroll">
+                    <div class="bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                        <svg class="w-8 h-8 icon-spin" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Desarrollo Colaborativo</h3>
+                    <p class="text-gray-300">Trabajamos juntos en proyectos open source y compartimos conocimiento</p>
+                </div>
+                <div class="text-center animate-on-scroll animate-delay-200">
+                    <div class="bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                        <svg class="w-8 h-8 icon-bounce" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Mentorías</h3>
+                    <p class="text-gray-300">Conectamos desarrolladores senior con junior para acelerar el aprendizaje</p>
+                </div>
+                <div class="text-center animate-on-scroll animate-delay-400">
+                    <div class="bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                        <svg class="w-8 h-8 icon-pulse" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Eventos Tech</h3>
+                    <p class="text-gray-300">Organizamos meetups, hackathons y charlas técnicas regulares</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">Proyectos Destacados</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-lg p-6 card-hover animate-on-scroll">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-400">DevTools Suite</h3>
+                    <p class="text-gray-300 mb-4">Conjunto de herramientas para desarrolladores que automatiza tareas comunes del día a día.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-purple-600 text-xs px-2 py-1 rounded animate-fade-in-left">JavaScript</span>
+                        <span class="bg-blue-600 text-xs px-2 py-1 rounded animate-fade-in-left animate-delay-100">Node.js</span>
+                    </div>
+                    <a href="#" class="text-purple-400 hover:text-purple-300 btn-animate">Ver proyecto →</a>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 card-hover animate-on-scroll animate-delay-200">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-400">Learning Platform</h3>
+                    <p class="text-gray-300 mb-4">Plataforma educativa para compartir recursos y tutoriales de programación.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-600 text-xs px-2 py-1 rounded animate-fade-in-left">React</span>
+                        <span class="bg-yellow-600 text-xs px-2 py-1 rounded animate-fade-in-left animate-delay-100">Firebase</span>
+                    </div>
+                    <a href="#" class="text-purple-400 hover:text-purple-300 btn-animate">Ver proyecto →</a>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 card-hover animate-on-scroll animate-delay-400">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-400">API Gateway</h3>
+                    <p class="text-gray-300 mb-4">Gateway de APIs open source con funcionalidades de rate limiting y autenticación.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-red-600 text-xs px-2 py-1 rounded animate-fade-in-left">Go</span>
+                        <span class="bg-gray-600 text-xs px-2 py-1 rounded animate-fade-in-left animate-delay-100">Docker</span>
+                    </div>
+                    <a href="#" class="text-purple-400 hover:text-purple-300 btn-animate">Ver proyecto →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonio -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">Lo que dicen de nosotros</h2>
+            <div class="max-w-4xl mx-auto">
+                <blockquote class="text-xl md:text-2xl text-gray-300 mb-6">
+                    "Escuadrón 404 me ayudó a crecer como desarrollador. La comunidad es increíble y siempre hay alguien dispuesto a ayudar."
+                </blockquote>
+                <div class="flex items-center justify-center">
+                    <img src="https://via.placeholder.com/60" alt="Avatar de María González" class="w-15 h-15 rounded-full mr-4">
+                    <div>
+                        <p class="font-semibold">María González</p>
+                        <p class="text-gray-400">Full Stack Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Discord -->
+    <section class="py-16 bg-gradient-to-r from-purple-900 to-blue-900">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 animate-on-scroll">¿Listo para unirte?</h2>
+            <p class="text-xl mb-8 text-gray-300 animate-on-scroll animate-delay-200">Conecta con desarrolladores de toda Latinoamérica</p>
+            <button id="discordBtn2" class="bg-white text-purple-900 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-100 btn-animate animate-bounce animate-on-scroll animate-delay-400">
+                Únete al Discord
+            </button>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contacto</h2>
+            <div class="max-w-2xl mx-auto">
+                <form class="space-y-6" role="form" aria-label="Formulario de contacto">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Nombre *</label>
+                        <input type="text" id="name" required class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+                        <input type="email" id="email" required class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2">Mensaje *</label>
+                        <textarea id="message" rows="4" required class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-md">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2024 Escuadrón 404. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h3>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="loginEmail" class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="loginEmail" required class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
+                </div>
+                <div class="mb-6">
+                    <label for="loginPassword" class="block text-sm font-medium mb-2">Contraseña</label>
+                    <input type="password" id="loginPassword" required class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
+                </div>
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-md mb-4">
+                    Iniciar Sesión
+                </button>
+                <button type="button" id="closeModal" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md">
+                    Cancelar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
