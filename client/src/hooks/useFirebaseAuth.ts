@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { auth } from '@/lib/firebase';
-import { useToast } from '@/hooks/use-toast';
+import { useEffect, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { auth } from "@/lib/firebase";
 
 interface User {
   email?: string;
@@ -18,8 +18,9 @@ export function useFirebaseAuth() {
       const unsubscribe = auth.onAuthStateChanged((firebaseUser: any) => {
         if (firebaseUser) {
           setUser({
-            email: firebaseUser.email || '',
-            displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0]
+            email: firebaseUser.email || "",
+            displayName:
+              firebaseUser.displayName || firebaseUser.email?.split("@")[0],
           });
         } else {
           setUser(null);
@@ -42,7 +43,7 @@ export function useFirebaseAuth() {
         });
       } else {
         // Demo mode simulation
-        const userName = email.split('@')[0];
+        const userName = email.split("@")[0];
         setUser({ email, displayName: userName });
         toast({
           title: `¡Bienvenido, ${userName}!`,
@@ -50,18 +51,18 @@ export function useFirebaseAuth() {
         });
       }
     } catch (error: any) {
-      let errorMessage = 'Error al iniciar sesión. Verifica tus credenciales.';
-      
-      if (error.code === 'auth/user-not-found') {
-        errorMessage = 'Usuario no encontrado. Verifica tu email.';
-      } else if (error.code === 'auth/wrong-password') {
-        errorMessage = 'Contraseña incorrecta.';
-      } else if (error.code === 'auth/invalid-email') {
-        errorMessage = 'Email inválido.';
-      } else if (error.code === 'auth/too-many-requests') {
-        errorMessage = 'Demasiados intentos. Intenta más tarde.';
+      let errorMessage = "Error al iniciar sesión. Verifica tus credenciales.";
+
+      if (error.code === "auth/user-not-found") {
+        errorMessage = "Usuario no encontrado. Verifica tu email.";
+      } else if (error.code === "auth/wrong-password") {
+        errorMessage = "Contraseña incorrecta.";
+      } else if (error.code === "auth/invalid-email") {
+        errorMessage = "Email inválido.";
+      } else if (error.code === "auth/too-many-requests") {
+        errorMessage = "Demasiados intentos. Intenta más tarde.";
       }
-      
+
       toast({
         title: "Error de autenticación",
         description: errorMessage,
@@ -98,6 +99,6 @@ export function useFirebaseAuth() {
     user,
     loading,
     login,
-    logout
+    logout,
   };
 }
