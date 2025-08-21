@@ -50,7 +50,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="text-gray-500">
-          &copy; 2024 Escuadrón 404. Todos los derechos reservados.
+          &copy; 2025 Escuadrón 404. Todos los derechos reservados.
         </p>
       </div>
     </footer>

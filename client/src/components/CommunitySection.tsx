@@ -8,15 +8,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { CommunitySectionProps } from "@/interfaces/auth";
 
-interface User {
-  email?: string;
-  displayName?: string;
-}
-
-interface CommunitySectionProps {
-  user: User | null;
-}
 
 export default function CommunitySection({ user }: CommunitySectionProps) {
   const [formData, setFormData] = useState({
