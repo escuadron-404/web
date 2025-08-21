@@ -22,3 +22,11 @@ tracing-subscriber = { version = "0.3", features = [
 
 tera = "1"
 chrono = "0.4.41"
+
+notify = { version = "6", optional = true }
+tokio-stream = { version = "0.1", optional = true }
+futures = { version = "0.3", optional = true }
+
+[features]
+default = ["dev"]
+dev = ["notify", "tokio-stream", "futures", "axum/ws"]
