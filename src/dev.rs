@@ -6,14 +6,17 @@ use axum::extract::{
 };
 use futures::stream::StreamExt;
 use notify::{EventKind, RecursiveMode, Watcher};
-use std::path::Path;
-use std::pin::Pin;
-use std::sync::Arc;
-use tokio::sync::RwLock;
-use tokio::sync::broadcast;
-use tokio::sync::broadcast::error::RecvError::Closed;
-use tokio::sync::broadcast::error::RecvError::Lagged;
-use tokio::time::{self, Duration, Sleep};
+use std::{path::Path, pin::Pin, sync::Arc};
+use tokio::{
+    sync::{
+        RwLock,
+        broadcast::{
+            Receiver, Sender,
+            error::RecvError::{Closed, Lagged},
+        },
+    },
+    time::{self, Duration, Sleep},
+};
 
 pub async fn ws_handler(
     ws: WebSocketUpgrade,
@@ -22,7 +25,8 @@ pub async fn ws_handler(
     ws.on_upgrade(move |socket| handle_socket(socket, state.reload_tx.unwrap()))
 }
 
-async fn handle_socket(mut socket: WebSocket, reload_tx: broadcast::Sender<()>) {
+// TODO: this needs a verbosity refactor (maybe some interfaces?)
+async fn handle_socket(mut socket: WebSocket, reload_tx: Sender<()>) {
     let mut rx = reload_tx.subscribe();
 
     loop {
@@ -75,9 +79,9 @@ async fn handle_socket(mut socket: WebSocket, reload_tx: broadcast::Sender<()>) 
 }
 
 pub async fn setup_file_watcher(
-    tx: broadcast::Sender<()>,
+    tx: Sender<()>,
     templater_arc: Arc<RwLock<tera::Tera>>,
-    mut shutdown_rx: broadcast::Receiver<()>,
+    mut shutdown_rx: Receiver<()>,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let (notify_tx, mut notify_rx) = tokio::sync::mpsc::channel(1);
 

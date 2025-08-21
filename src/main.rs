@@ -3,16 +3,18 @@ extern crate tera;
 pub mod dev;
 pub mod handlers;
 pub mod state;
+
+#[cfg(feature = "dev")]
+use crate::dev::{setup_file_watcher, ws_handler};
+
 use crate::state::AppState;
 use axum::{Router, routing::get};
-#[cfg(feature = "dev")]
-use dev::{setup_file_watcher, ws_handler};
-use std::net::SocketAddr;
-use std::sync::Arc;
+use std::{net::SocketAddr, sync::Arc};
 use tera::Tera;
-use tokio::sync::RwLock;
-use tokio::sync::broadcast;
+use tokio::sync::{RwLock, broadcast};
 use tower_http::services::ServeDir;
+
+const DEFAULT_PORT: u16 = 42069;
 
 #[tokio::main]
 async fn main() {
@@ -44,8 +46,10 @@ async fn main() {
         reload_tx: Some(reload_tx.clone()),
     };
 
-    let static_files_service = ServeDir::new("static").append_index_html_on_directories(true);
+    let static_files_service =
+        ServeDir::new("static").append_index_html_on_directories(true);
 
+    #[allow(unused_mut)]
     let mut app = Router::new()
         .route("/", get(handlers::home_page))
         .nest_service("/static", static_files_service);
@@ -58,8 +62,12 @@ async fn main() {
         let watcher_templater_arc = app_state.templater.clone();
         let watcher_shutdown_rx = shutdown_tx.subscribe();
         tokio::spawn(async move {
-            if let Err(e) =
-                setup_file_watcher(watcher_tx, watcher_templater_arc, watcher_shutdown_rx).await
+            if let Err(e) = setup_file_watcher(
+                watcher_tx,
+                watcher_templater_arc,
+                watcher_shutdown_rx,
+            )
+            .await
             {
                 eprintln!("File watcher error: {:?}", e);
             }
@@ -72,9 +80,9 @@ async fn main() {
     let port = match std::env::var("AXUM_PORT") {
         Ok(_port) => match _port.parse::<u16>() {
             Ok(__port) => __port,
-            _ => 42069,
+            _ => DEFAULT_PORT,
         },
-        _ => 42069,
+        _ => DEFAULT_PORT,
     };
 
     let addr = SocketAddr::from(([0, 0, 0, 0], port));

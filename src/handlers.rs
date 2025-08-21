@@ -1,10 +1,11 @@
 use crate::AppState;
-use axum::response::Html;
-use axum::{extract::State, http::StatusCode};
+use axum::{extract::State, http::StatusCode, response::Html};
 use chrono::Datelike;
 use tera::Context;
 
-pub async fn home_page(State(state): State<AppState>) -> Result<Html<String>, StatusCode> {
+pub async fn home_page(
+    State(state): State<AppState>,
+) -> Result<Html<String>, StatusCode> {
     let mut context = Context::new();
     context.insert("year", &chrono::Utc::now().year());
 
