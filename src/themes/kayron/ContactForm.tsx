@@ -1,6 +1,9 @@
+"use client";
 // theme-modules/kayron/ContactForm.tsx
-import React, { FC, useState } from "react";
-import { ContactFormProps } from "@/lib/types";
+"use client";
+import type React from "react";
+import { type FC, useState } from "react";
+import type { ContactFormProps } from "@/lib/types";
 import "./style.css"; // Import Kayron's specific styles
 
 const KayronContactForm: FC<ContactFormProps> = ({

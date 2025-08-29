@@ -1,13 +1,12 @@
 import type { ThemeComponents } from "@/lib/types";
-import KayronLayout from "./Layout";
-import KayronNavbar from "./Navbar";
-import KayronHero from "./Hero";
 import KayronAboutSection from "./AboutSection";
-import KayronProjectsSection from "./ProjectsSection";
-import KayronTestimonialSection from "./TestimonialSection";
-import KayronCallToActionSection from "./CallToActionSection";
 import KayronContactForm from "./ContactForm";
 import KayronFooter from "./Footer";
+import KayronHero from "./Hero";
+import KayronLayout from "./Layout";
+import KayronNavbar from "./Navbar";
+import KayronProjectsSection from "./ProjectsSection";
+import KayronTestimonialSection from "./TestimonialSection";
 
 const KayronTheme: ThemeComponents = {
   Layout: KayronLayout,
@@ -16,7 +15,6 @@ const KayronTheme: ThemeComponents = {
   AboutSection: KayronAboutSection,
   ProjectsSection: KayronProjectsSection,
   TestimonialSection: KayronTestimonialSection,
-  CallToActionSection: KayronCallToActionSection,
   ContactForm: KayronContactForm,
   Footer: KayronFooter,
 };

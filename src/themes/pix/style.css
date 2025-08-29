@@ -1,0 +1,155 @@
+/* src/themes/pix/style.css */
+/* Pix Theme specific styles */
+
+[data-theme="pix"] {
+  --background: #f0f0f0;
+  --foreground: #333333;
+  --card: #ffffff;
+  --card-foreground: #333333;
+  --popover: #ffffff;
+  --popover-foreground: #333333;
+  --primary: #4a90e2; /* A clean blue */
+  --primary-foreground: #ffffff;
+  --secondary: #e0e0e0;
+  --secondary-foreground: #333333;
+  --muted: #f5f5f5;
+  --muted-foreground: #777777;
+  --accent: #4a90e2;
+  --accent-foreground: #ffffff;
+  --destructive: #d0021b;
+  --destructive-foreground: #ffffff;
+  --border: #cccccc;
+  --input: #f0f0f0;
+  --ring: #4a90e2;
+  --chart-1: #4a90e2;
+  --chart-2: #50e3c2;
+  --chart-3: #f5a623;
+  --chart-4: #bd10e0;
+  --chart-5: #7ed321;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #333333;
+  --sidebar-primary: #4a90e2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #4a90e2;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #cccccc;
+  --sidebar-ring: #4a90e2;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --radius: 0.5rem; /* Slightly smaller radius */
+
+  /* Ensure these are distinct or removed if not used */
+  --color-purple-500: #8c53eb;
+  --color-blue-600: #4a90e2;
+  --color-purple-400: #a06de5;
+  --color-yellow-400: #f5a623;
+  --color-orange-500: #f89406;
+}
+
+/* View Transition Name for Navbar */
+nav.glass {
+  view-transition-name: main-nav;
+}
+
+.pix-theme-root {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pix-theme-root .text-gradient-purple {
+  background: linear-gradient(135deg, var(--primary), var(--chart-2)); /* Pix specific gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pix-theme-root .black-card-enhanced {
+  background: var(--card); /* Simpler card background */
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.pix-theme-root .glass,
+.pix-theme-root .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(200, 200, 200, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.pix-theme-root .input-enhanced {
+  background: var(--input);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+.pix-theme-root .input-enhanced:focus {
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 3px var(--primary),
+    0 0 10px var(--primary);
+}
+
+/* Remove or override Kayron-specific animations if not desired for Pix */
+.pix-theme-root .animate-float,
+.pix-theme-root .animate-pulse-soft,
+.pix-theme-root .animate-glow,
+.pix-theme-root .animate-slide-up,
+.pix-theme-root .animate-gradient-x {
+  animation: none !important; /* Disable animations for a "clean" theme */
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.pix-theme-root .bg-mesh {
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0); /* Simpler background */
+}
+
+.black-card-enhanced {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.black-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 20%,
+    var(--primary) 30%,
+    var(--accent) 40%,
+    transparent 50%,
+    transparent 70%,
+    var(--primary) 80%,
+    var(--accent) 90%,
+    transparent 100%
+  );
+  animation: none;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  z-index: -1;
+}
+
+.black-card-enhanced:hover::before {
+  animation: rotate-glow 4s linear infinite;
+  opacity: 1;
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

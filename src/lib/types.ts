@@ -1,35 +1,37 @@
+// src/lib/types.ts
 import type { FC, ReactNode } from "react";
+import type { Dictionary } from "@/lib/dictionaries";
 
-// Define the structure of navigation links
 export interface NavLink {
   href: string;
   label: string;
 }
 
-// Define the structure of contact form fields
 export interface ContactFormField {
   name: string;
   label: string;
-  type: "text" | "email" | "textarea" | "subject"; // Added 'subject' type
+  type: "text" | "email" | "textarea" | "subject";
   required?: boolean;
   placeholder?: string;
 }
 
-// Define the structure of social links (for footer)
 export interface SocialLink {
   icon: ReactNode; // SVG JSX or component
   href: string;
   label: string;
 }
 
-// --- Component Props Interfaces (for required content) ---
 export interface NavbarProps {
   brandName: string;
   brandTagline: string;
   logoSvg: ReactNode;
   navLinks: NavLink[];
-  themeSwitcher: ReactNode; // The ThemeSwitcher component itself
-  mobileMenuButton: ReactNode; // E.g., a "Hamburger" icon button
+  themeSwitcher: ReactNode;
+  languageSwitcher: ReactNode;
+  mobileMenuButton: ReactNode;
+  discordLink?: string;
+  githubLink?: string;
+  actionButton?: ReactNode; // Optional, if you want a call-to-action button in the navbar
 }
 
 export interface HeroProps {
@@ -37,10 +39,9 @@ export interface HeroProps {
   subtitle: string;
   ctaText: string;
   ctaLink: string;
-  ctaIcon: ReactNode; // Icon for the CTA button
+  ctaIcon: ReactNode;
 }
 
-// For Kayron's "What do we do?" section
 export interface FeatureCard {
   icon: ReactNode;
   title: string;
@@ -53,41 +54,42 @@ export interface AboutSectionProps {
   features: FeatureCard[];
 }
 
-// For Kayron's "Proyectos Destacados" section
 export interface ProjectCard {
-  icon: ReactNode;
+  icon: ReactNode | null; // Can be null now, assigned default in BaseLayout
   title: string;
   description: string;
   tags: string[];
   projectLink: string;
+  demoLink: string | null;
 }
 
 export interface ProjectsSectionProps {
   heading: string;
   subheading: string;
   projects: ProjectCard[];
+  error?: string | null;
 }
 
-// For Kayron's Testimonial section
-export interface TestimonialProps {
+export interface repo {
+  name: string;
+  description: string;
+  topics: string[];
+  html_url: string;
+  homepage: string;
+}
+
+export interface TestimonialCardProps {
+  // Renamed for clarity, represents a single testimonial
   quote: string;
   authorName: string;
   authorRole: string;
-  authorAvatar: ReactNode; // Could be a simple icon or an actual image component
-  rating: number; // e.g., 1-5 stars
+  authorAvatar: ReactNode | null; // Can be null now, assigned default in BaseLayout
+  rating: number;
 }
 
 export interface TestimonialSectionProps {
-  testimonial: TestimonialProps;
-}
-
-// For Kayron's final "Listo para unirte?" CTA section
-export interface CallToActionProps {
-  heading: string;
-  subheading: string;
-  ctaText: string;
-  ctaLink: string;
-  ctaIcon: ReactNode;
+  testimonials: TestimonialCardProps[]; // Now expects an array of testimonials
+  error?: string | null;
 }
 
 export interface ContactFormProps {
@@ -108,17 +110,41 @@ export interface FooterProps {
   socialLinks: SocialLink[];
 }
 
-// --- The Core Theme Components Interface ---
-export interface ThemeComponents {
-  Layout: FC<{ children: ReactNode }>;
-  Navbar: FC<NavbarProps>;
-  Hero: FC<HeroProps>;
-  AboutSection: FC<AboutSectionProps>;
-  ProjectsSection: FC<ProjectsSectionProps>; // New section
-  TestimonialSection: FC<TestimonialSectionProps>; // New section
-  CallToActionSection: FC<CallToActionProps>; // New section
-  ContactForm: FC<ContactFormProps>;
-  Footer: FC<FooterProps>;
+export interface BaseLayoutProps {
+  children: React.ReactNode;
+  dictionary: Dictionary;
+  locale: "en" | "es";
+  initialProjects: ProjectCard[];
+  initialProjectsError: string | null;
+  initialTestimonials: TestimonialCardProps[];
+  initialTestimonialsError: string | null;
+  navLinks: NavLink[];
+  heroContent: HeroProps;
+  aboutSectionContent: AboutSectionProps;
+  projectsSectionContent: ProjectsSectionProps;
+  testimonialSectionContent: TestimonialSectionProps;
+  contactFormContent: ContactFormProps;
+  footerContent: FooterProps;
 }
 
-export type ThemeName = "pix" | "kayron" | string; // Add 'kayron'
+export type ThemeComponents = {
+  Layout: React.ComponentType<{ children: ReactNode }>;
+  Navbar: React.ComponentType<NavbarProps>;
+  Hero: React.ComponentType<HeroProps>;
+  AboutSection: React.ComponentType<AboutSectionProps>;
+  ProjectsSection: React.ComponentType<ProjectsSectionProps>;
+  TestimonialSection: React.ComponentType<TestimonialSectionProps>;
+  ContactForm: React.ComponentType<ContactFormProps>;
+  Footer: React.ComponentType<FooterProps>;
+};
+
+// Update ThemeContextType here for clarity in useTheme hook
+export interface ThemeContextType {
+  currentTheme: ThemeName;
+  setTheme: (theme: ThemeName) => void;
+  availableThemes: { id: ThemeName; name: string }[];
+  themeComponents: ThemeComponents | null;
+  isThemeTransitioning: boolean; // Add this line
+}
+
+export type ThemeName = "pix" | "kayron" | string;

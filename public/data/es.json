@@ -1,0 +1,82 @@
+{
+  "brand": {
+    "name": "Escuadrón 404",
+    "tagline": "Dev Community",
+    "copyright": "© {year} {brandName}. Todos los derechos reservados.",
+    "footerTagline": "Construyendo el futuro del desarrollo, una línea de código a la vez"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "projects": "Proyectos",
+    "testimonials": "Testimonios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "subtitle": "Comunidad de desarrolladores apasionados por la tecnología, donde el error 404 se convierte en oportunidad de crecimiento",
+    "ctaText": "Únete al Discord"
+  },
+  "about": {
+    "heading": "¿Qué hacemos?",
+    "subheading": "Construimos el futuro del desarrollo con pasión, conocimiento y colaboración",
+    "features": {
+      "collaborative": {
+        "title": "Desarrollo Colaborativo",
+        "description": "Trabajamos juntos en proyectos open source, compartimos conocimiento y construimos soluciones que impactan"
+      },
+      "mentoring": {
+        "title": "Mentorías",
+        "description": "Conectamos desarrolladores senior con junior para acelerar el aprendizaje y crear vínculos duraderos"
+      },
+      "events": {
+        "title": "Eventos Tech",
+        "description": "Organizamos meetups, hackathons y charlas técnicas que inspiran y conectan a la comunidad tech"
+      }
+    }
+  },
+  "projects": {
+    "heading": "Proyectos Destacados",
+    "subheading": "Innovaciones que nacen de la colaboración y el talento de nuestra comunidad",
+    "loading": "Cargando proyectos...",
+    "error": "Error al cargar proyectos."
+  },
+  "testimonials": {
+    "loading": "Cargando testimonios...",
+    "error": "Error al cargar testimonios."
+  },
+  "cta": {
+    "heading": "¿Listo para unirte?",
+    "subheading": "Conecta con más de 1,000 desarrolladores de toda Latinoamérica y forma parte de nuestra comunidad",
+    "button": "Únete al Discord"
+  },
+  "contactForm": {
+    "heading": "Contáctanos",
+    "subheading": "¿Tienes una pregunta o quieres colaborar? Nos encantaría saber de ti",
+    "fields": {
+      "name": {
+        "label": "Nombre *",
+        "placeholder": "Tu nombre completo"
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "tu@email.com"
+      },
+      "subject": {
+        "label": "Asunto",
+        "placeholder": "¿De qué quieres hablar?"
+      },
+      "message": {
+        "label": "Mensaje *",
+        "placeholder": "Cuéntanos más sobre tu proyecto o pregunta..."
+      }
+    },
+    "submitButton": "Enviar Mensaje"
+  },
+  "buttons": {
+    "refreshProjects": "Refrescar Proyectos",
+    "refreshTestimonials": "Refrescar Testimonios"
+  },
+  "general": {
+    "loadingTheme": "Cargando tema..."
+  }
+}

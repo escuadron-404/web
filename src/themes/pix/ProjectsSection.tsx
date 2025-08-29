@@ -1,13 +1,13 @@
 "use client";
-// theme-modules/kayron/ProjectsSection.tsx
+// src/themes/pix/ProjectsSection.tsx
 
 import Link from "next/link";
 import type { FC } from "react";
 import type { ProjectsSectionProps } from "@/lib/types";
-import "./style.css"; // Import Kayron's specific styles
-import { ExternalLinkIcon } from "@/components/BaseLayout"; // Import icon
+import "./style.css";
+import { ExternalLinkIcon } from "@/components/BaseLayout";
 
-const KayronProjectsSection: FC<ProjectsSectionProps> = ({
+const PixProjectsSection: FC<ProjectsSectionProps> = ({
   heading,
   subheading,
   projects,
@@ -19,11 +19,13 @@ const KayronProjectsSection: FC<ProjectsSectionProps> = ({
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-purple">
           {heading}
         </h2>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">{subheading}</p>
+        <p className="text-xl text-foreground max-w-2xl mx-auto">
+          {subheading}
+        </p>
       </div>
 
       {error && (
-        <div className="text-center text-red-500 text-lg mb-4">{error}</div>
+        <div className="text-center text-destructive text-lg mb-4">{error}</div>
       )}
 
       {!error && projects.length > 0 && (
@@ -31,24 +33,24 @@ const KayronProjectsSection: FC<ProjectsSectionProps> = ({
           {projects.map((project) => (
             <div
               key={project.title}
-              className="black-card-enhanced rounded-3xl p-8 hover-lift group"
+              className="black-card-enhanced rounded-xl p-8 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-xl flex items-center justify-center mr-4">
                   {project.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gradient-purple">
+                <h3 className="text-2xl font-bold text-foreground">
                   {project.title}
                 </h3>
               </div>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-muted-foreground mb-6 leading-relaxed">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs px-3 py-1 rounded-full font-medium"
+                    className="bg-secondary text-secondary-foreground text-xs px-3 py-1 rounded-full font-medium"
                   >
                     {tag}
                   </span>
@@ -56,7 +58,7 @@ const KayronProjectsSection: FC<ProjectsSectionProps> = ({
               </div>
               <Link
                 href={project.projectLink}
-                className="inline-flex items-center text-purple-400 hover:text-purple-300 font-semibold transition-colors group-hover:translate-x-2 transform duration-300"
+                className="inline-flex items-center text-primary hover:text-primary/80 font-semibold transition-colors group-hover:translate-x-1 transform duration-300"
               >
                 Ver proyecto
                 <ExternalLinkIcon className="w-4 h-4 ml-2" />
@@ -67,7 +69,7 @@ const KayronProjectsSection: FC<ProjectsSectionProps> = ({
       )}
 
       {!error && projects.length === 0 && (
-        <div className="text-center text-gray-500 text-lg">
+        <div className="text-center text-muted-foreground text-lg">
           No projects available.
         </div>
       )}
@@ -75,4 +77,4 @@ const KayronProjectsSection: FC<ProjectsSectionProps> = ({
   );
 };
 
-export default KayronProjectsSection;
+export default PixProjectsSection;

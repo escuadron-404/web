@@ -84,6 +84,11 @@
   --color-white: #fff;
 }
 
+/* View Transition Name for Navbar */
+nav.glass {
+  view-transition-name: main-nav;
+}
+
 /* @property declarations - crucial for custom animations/transitions if not globally defined */
 /* These were present in the original CSS, so they are included here */
 @property --tw-translate-x {
@@ -486,7 +491,7 @@
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   background: #000000d9;
-  border: 1px solid var(--color-purple-600) 4d; /* Using theme var for consistency */
+  border: 1px solid var(--color-purple-600); /* Using theme var for consistency */
   box-shadow: 0 8px 32px #0000004d;
 }
 .glass-card {
@@ -496,7 +501,7 @@
   border: 1px solid var(--color-purple-600) 40;
   box-shadow:
     0 12px 40px #0006,
-    inset 0 1px var(--color-purple-600) 1a;
+    inset 0 1px var(--color-purple-600);
 }
 .hover-lift {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -545,8 +550,8 @@
   background: #000c;
   border-color: var(--primary);
   box-shadow:
-    0 0 0 3px var(--primary) 26,
-    0 0 20px var(--primary) 1a;
+    0 0 0 3px var(--primary),
+    0 0 20px var(--primary);
 }
 @media (max-width: 768px) {
   .glass,
@@ -590,7 +595,50 @@ select:focus {
   box-shadow:
     0 20px 60px #00000080,
     inset 0 1px var(--color-purple-600);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
+
+.black-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 20%,
+    var(--primary) 30%,
+    var(--accent) 40%,
+    transparent 50%,
+    transparent 70%,
+    var(--primary) 80%,
+    var(--accent) 90%,
+    transparent 100%
+  );
+  animation: none;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  z-index: -1;
+}
+
+.black-card-enhanced:hover::before {
+  animation: rotate-glow 4s linear infinite;
+  opacity: 1;
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .hover-scale {
   transition: transform 0.3s ease-in-out;
 }

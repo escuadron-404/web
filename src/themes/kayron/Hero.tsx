@@ -1,7 +1,10 @@
+"use client";
+"use client";
 // theme-modules/kayron/Hero.tsx
-import React, { FC } from "react";
+
 import Link from "next/link";
-import { HeroProps } from "@/lib/types";
+import React, { type FC } from "react";
+import type { HeroProps } from "@/lib/types";
 import "./style.css"; // Import Kayron's specific styles
 
 const KayronHero: FC<HeroProps> = ({
@@ -12,10 +15,8 @@ const KayronHero: FC<HeroProps> = ({
   ctaIcon,
 }) => {
   return (
-    <div className="bg-mesh min-h-screen pt-24">
-      {" "}
-      {/* Note: id="comunidad" is on the BaseLayout's section wrapper */}
-      <div className="container mx-auto px-6 py-20">
+    <div className="bg-mesh min-h-screen pt-24 flex">
+      <div className="container mx-auto my-auto px-6 py-20">
         <div className="text-center max-w-5xl mx-auto">
           <div
             className="animate-slide-up opacity-0"

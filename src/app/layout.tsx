@@ -1,29 +1,14 @@
-import { Inter } from "next/font/google"; // Import Inter
-import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import type { Metadata } from "next";
-import { BaseLayout } from "@/components/BaseLayout";
+// src/app/layout.tsx
+import "./globals.css"; // Global styles apply to the whole app
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" }); // Define it as a CSS variable
-
-export const metadata: Metadata = {
-  title: "Contractor Collective - Hire Our Team",
-  description:
-    "A collective of expert programmers ready to tackle your projects.",
-};
+// REMOVED: Metadata, Inter font. These should go in [locale]/layout.tsx
+// The top-level layout in an i18n setup often just passes children.
+// Metadata can be dynamic based on locale in the [locale]/layout.tsx
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="es" className={`${inter.variable}`}>
-      <body>
-        <ThemeProvider>
-          <BaseLayout>{children}</BaseLayout>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+  return children; // Just pass children directly. The [locale]/layout will provide <html><body>
 }

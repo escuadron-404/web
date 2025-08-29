@@ -1,12 +1,12 @@
 "use client";
-// theme-modules/kayron/TestimonialSection.tsx
-import type { FC } from "react";
+// src/themes/pix/TestimonialSection.tsx
+import React, { type FC } from "react";
 import type {
   TestimonialCardProps,
   TestimonialSectionProps,
 } from "@/lib/types";
 import "./style.css";
-import { MessageCircleIcon } from "@/components/BaseLayout";
+import { MessageCircleIcon } from "@/components/BaseLayout"; // Ensure icon is imported
 
 // Helper component for a single testimonial card
 const TestimonialCard: FC<TestimonialCardProps> = ({
@@ -17,24 +17,27 @@ const TestimonialCard: FC<TestimonialCardProps> = ({
   rating,
 }) => {
   const starIcons = Array.from({ length: rating }, (_, i) => (
-    <div key={i} className="w-4 h-4 bg-yellow-400 rounded"></div>
+    <div
+      key={`${i}-${authorName}`}
+      className="w-4 h-4 bg-yellow-400 rounded"
+    ></div>
   ));
 
   return (
-    <div className="black-card-enhanced rounded-3xl p-8 text-center h-full flex flex-col justify-between hover-lift group">
+    <div className="black-card-enhanced rounded-xl p-8 text-center h-full flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
       <div className="mb-6">
-        <MessageCircleIcon className="w-12 h-12 text-purple-400 mx-auto opacity-50 mb-4" />
-        <blockquote className="text-xl font-light text-gray-200 leading-relaxed italic">
+        <MessageCircleIcon className="w-12 h-12 text-primary mx-auto opacity-50 mb-4" />
+        <blockquote className="text-xl font-light text-foreground leading-relaxed italic">
           "{quote}"
         </blockquote>
       </div>
       <div className="flex items-center justify-center space-x-4 pt-4">
-        <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center ring-2 ring-purple-500/30">
+        <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center ring-2 ring-primary/30">
           {authorAvatar}
         </div>
         <div className="text-left">
-          <p className="font-bold text-md text-gradient-purple">{authorName}</p>
-          <p className="text-gray-400 text-sm">{authorRole}</p>
+          <p className="font-bold text-md text-foreground">{authorName}</p>
+          <p className="text-muted-foreground text-sm">{authorRole}</p>
           <div className="flex items-center mt-1">
             <div className="flex space-x-0.5">{starIcons}</div>
           </div>
@@ -44,7 +47,7 @@ const TestimonialCard: FC<TestimonialCardProps> = ({
   );
 };
 
-const KayronTestimonialSection: FC<TestimonialSectionProps> = ({
+const PixTestimonialSection: FC<TestimonialSectionProps> = ({
   testimonials,
   error,
 }) => {
@@ -53,28 +56,26 @@ const KayronTestimonialSection: FC<TestimonialSectionProps> = ({
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-purple">
           Testimonios
-        </h2>{" "}
-        {/* Hardcoded for now, but usually from dictionary */}
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+        </h2>
+        <p className="text-xl text-foreground max-w-2xl mx-auto">
           Lo que nuestra comunidad tiene que decir.
-        </p>{" "}
-        {/* Hardcoded for now */}
+        </p>
       </div>
 
       {error && (
-        <div className="text-center text-red-500 text-lg mb-4">{error}</div>
+        <div className="text-center text-destructive text-lg mb-4">{error}</div>
       )}
 
       {!error && testimonials.length > 0 && (
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} />
+            <TestimonialCard key={`testimonial-${index}`} {...testimonial} />
           ))}
         </div>
       )}
 
       {!error && testimonials.length === 0 && (
-        <div className="text-center text-gray-500 text-lg">
+        <div className="text-center text-muted-foreground text-lg">
           No testimonials available.
         </div>
       )}
@@ -82,4 +83,4 @@ const KayronTestimonialSection: FC<TestimonialSectionProps> = ({
   );
 };
 
-export default KayronTestimonialSection;
+export default PixTestimonialSection;

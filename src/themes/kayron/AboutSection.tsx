@@ -1,6 +1,7 @@
+"use client";
 // theme-modules/kayron/AboutSection.tsx
-import React, { FC } from "react";
-import { AboutSectionProps } from "@/lib/types";
+import React, { type FC } from "react";
+import type { AboutSectionProps } from "@/lib/types";
 import "./style.css"; // Import Kayron's specific styles
 
 const KayronAboutSection: FC<AboutSectionProps> = ({

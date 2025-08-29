@@ -12,4 +12,5 @@ export const themeComponentLoaders: Record<
   () => Promise<ThemeModule>
 > = {
   kayron: () => import("@/themes/kayron"),
+  pix: () => import("@/themes/pix"),
 };
