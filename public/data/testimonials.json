@@ -1,0 +1,23 @@
+[
+  {
+    "quote": "Escuadrón 404 transformó mi carrera como desarrollador. La comunidad es increíble, siempre hay alguien dispuesto a ayudar y los proyectos colaborativos me han permitido crecer exponencialmente.",
+    "authorName": "María González",
+    "authorRole": "Senior Full Stack Developer",
+    "authorAvatar": null,
+    "rating": 5
+  },
+  {
+    "quote": "Desde que me uní a Escuadrón 404, he encontrado un ambiente de aprendizaje inigualable. Las mentorías son de gran valor y la camaradería es fantástica.",
+    "authorName": "Carlos Pérez",
+    "authorRole": "Junior Software Engineer",
+    "authorAvatar": null,
+    "rating": 4
+  },
+  {
+    "quote": "Los eventos tech organizados por Escuadrón 404 son siempre relevantes y muy bien organizados. Es una excelente manera de mantenerse actualizado y conectar con otros profesionales.",
+    "authorName": "Ana López",
+    "authorRole": "Data Scientist",
+    "authorAvatar": null,
+    "rating": 5
+  }
+]

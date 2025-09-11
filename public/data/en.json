@@ -1,0 +1,82 @@
+{
+  "brand": {
+    "name": "404 Squad",
+    "tagline": "Dev Community",
+    "copyright": "© {year} {brandName}. All rights reserved.",
+    "footerTagline": "Building the future of development, one line of code at a time"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "A community of developers passionate about technology, where a 404 error becomes an opportunity for growth.",
+    "ctaText": "Join Discord"
+  },
+  "about": {
+    "heading": "What we do?",
+    "subheading": "We build the future of development with passion, knowledge, and collaboration.",
+    "features": {
+      "collaborative": {
+        "title": "Collaborative Development",
+        "description": "We work together on open-source projects, share knowledge, and build impactful solutions."
+      },
+      "mentoring": {
+        "title": "Mentoring",
+        "description": "We connect senior developers with juniors to accelerate learning and build lasting bonds."
+      },
+      "events": {
+        "title": "Tech Events",
+        "description": "We organize meetups, hackathons, and technical talks that inspire and connect the tech community."
+      }
+    }
+  },
+  "projects": {
+    "heading": "Featured Projects",
+    "subheading": "Innovations born from the collaboration and talent of our community",
+    "loading": "Loading projects...",
+    "error": "Error loading projects."
+  },
+  "testimonials": {
+    "loading": "Loading testimonials...",
+    "error": "Error loading testimonials."
+  },
+  "cta": {
+    "heading": "Ready to join?",
+    "subheading": "Connect with over 1,000 developers from across Latin America and become part of our community.",
+    "button": "Join Discord"
+  },
+  "contactForm": {
+    "heading": "Contact Us",
+    "subheading": "Have a question or want to collaborate? We'd love to hear from you.",
+    "fields": {
+      "name": {
+        "label": "Name *",
+        "placeholder": "Your full name"
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "your@email.com"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "What do you want to talk about?"
+      },
+      "message": {
+        "label": "Message *",
+        "placeholder": "Tell us more about your project or question..."
+      }
+    },
+    "submitButton": "Send Message"
+  },
+  "buttons": {
+    "refreshProjects": "Refresh Projects",
+    "refreshTestimonials": "Refresh Testimonials"
+  },
+  "general": {
+    "loadingTheme": "Loading theme..."
+  }
+}
