@@ -13,11 +13,14 @@ export async function loadThemeComponentsServer(
   themeId: ThemeName,
 ): Promise<ThemeComponents> {
   const loader = themeComponentLoaders[themeId];
-  if (!loader) {
+  if (
+    !Object.prototype.hasOwnProperty.call(themeComponentLoaders, themeId) ||
+    typeof loader !== "function"
+  ) {
     console.error(
-      `Theme components for "${themeId}" not found. Falling back to default.`,
+      `Theme components for "${themeId}" not found or invalid. Falling back to default.`,
     );
-    // Fallback to a default theme if the requested one is not found
+    // Fallback to a default theme if the requested one is not found or invalid
     const defaultThemeModule =
       await themeComponentLoaders[availableThemes[0].id]();
     return defaultThemeModule.default;
