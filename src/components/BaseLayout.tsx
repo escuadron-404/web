@@ -50,8 +50,8 @@ export const CodeIcon = ({ className = "" }: { className?: string }) => (
         fontSize="192px"
         fontWeight="900"
         fill="#FFFFFF"
-        text-anchor="middle"
-        dominant-baseline="middle"
+        textAnchor="middle"
+        dominantBaseline="middle"
         user-select="none"
         id="text302"
       >
